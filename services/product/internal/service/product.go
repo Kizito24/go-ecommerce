@@ -5,8 +5,8 @@ import (
 	"math/rand"
 	"time"
 
-	"github.com/yourusername/ecom/common/api" // Import generated code
-	"github.com/yourusername/ecom/product/internal/models"
+	"github.com/Kizito24/ecom/common/api" // Import generated code
+	"github.com/Kizito24/ecom/product/internal/models"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 	"google.golang.org/grpc/codes"

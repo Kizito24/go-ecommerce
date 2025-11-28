@@ -1,4 +1,4 @@
-module github.com/yourusername/ecom/product
+module github.com/Kizito24/ecom/product
 
 go 1.24.10
 

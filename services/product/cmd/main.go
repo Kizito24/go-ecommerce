@@ -4,9 +4,9 @@ import (
 	"log"
 	"net"
 
-	"github.com/yourusername/ecom/common/api"
-	"github.com/yourusername/ecom/product/internal/db"
-	"github.com/yourusername/ecom/product/internal/service"
+	"github.com/Kizito24/ecom/common/api"
+	"github.com/Kizito24/ecom/product/internal/db"
+	"github.com/Kizito24/ecom/product/internal/service"
 	"google.golang.org/grpc"
 )
 
