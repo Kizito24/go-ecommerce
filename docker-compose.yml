@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   # -----------------------------
   # INFRASTRUCTURE (DATABASES & QUEUES)
@@ -12,7 +10,7 @@ services:
       POSTGRES_PASSWORD: password
       POSTGRES_DB: ecom_db
     ports:
-      - "5432:5432"
+      - "5433:5432"
     volumes:
       - pg_data:/var/lib/postgresql/data
     networks:
@@ -32,15 +30,15 @@ services:
     image: rabbitmq:3-management-alpine
     container_name: ecom_rabbitmq
     ports:
-      - "5672:5672"       # Messaging port
-      - "15672:15672"     # Management UI (http://localhost:15672)
+      - "5672:5672" # Messaging port
+      - "15672:15672" # Management UI (http://localhost:15672)
     networks:
       - ecom-network
 
   # -----------------------------
   # MICROSERVICES (GOLANG)
   # -----------------------------
-  
+
   # 1. API Gateway (The entry point for React Native)
   gateway-service:
     build: ./services/gateway

@@ -1,0 +1,77 @@
+syntax = "proto3";
+
+package product;
+
+// This defines the Golang import path and package name for generated code.
+// Use '<import_path>;<package>' format so protoc-gen-go can determine imports.
+option go_package = "github.com/yourusername/ecom/common/api;api";
+
+// ------------------------------------
+// The Service Definition (Interface)
+// ------------------------------------
+service ProductService {
+  // Client sends CreateProductRequest, Server returns CreateProductResponse
+  rpc CreateProduct (CreateProductRequest) returns (CreateProductResponse) {}
+  
+  // Client sends GetProductRequest, Server returns GetProductResponse
+  rpc GetProduct (GetProductRequest) returns (GetProductResponse) {}
+  
+  // Client sends ListProductsRequest, Server returns ListProductsResponse
+  rpc ListProducts (ListProductsRequest) returns (ListProductsResponse) {}
+
+  rpc DecreaseStock (DecreaseStockRequest) returns (DecreaseStockResponse) {}
+}
+
+// ------------------------------------
+// The Data Models (Messages)
+// ------------------------------------
+
+// Represents a single product in our system
+message Product {
+  int64 id = 1;          // Unique ID
+  string name = 2;       // Product Name
+  string description = 3;
+  float price = 4;
+  int64 stock = 5;       // Inventory count
+}
+
+message CreateProductRequest {
+  string name = 1;
+  string description = 2;
+  float price = 3;
+  int64 stock = 4;
+}
+
+message CreateProductResponse {
+  int64 id = 1; // Return the ID of the created product
+  string error = 2; // Empty if success
+}
+
+message GetProductRequest {
+  int64 id = 1;
+}
+
+message GetProductResponse {
+  Product product = 1;
+  string error = 2;
+}
+
+// Listing products might need pagination later, but we keep it simple for now
+message ListProductsRequest {
+  // Empty for now, meaning "Give me everything"
+}
+
+message ListProductsResponse {
+  repeated Product products = 1; // "repeated" means an Array/Slice
+  string error = 2;
+}
+
+message DecreaseStockRequest {
+  int64 id = 1;
+  int64 quantity = 2;
+}
+
+message DecreaseStockResponse {
+  bool success = 1;
+  string error = 2;
+}

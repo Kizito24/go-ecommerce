@@ -1,0 +1,7 @@
+go 1.24.10
+
+use (
+	./common
+	./services/auth
+	./services/gateway
+)
